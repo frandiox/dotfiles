@@ -164,7 +164,7 @@
     Plugin 'Raimondi/delimitMate'
 
     " UltiSnip - Implementation of TextMate's Snippets
-    Plugin 'SirVer/ultisnips'
+ "   Plugin 'SirVer/ultisnips'
 
     " Syntastic - Syntax cheching through external syntax checkers
     Plugin 'scrooloose/syntastic'
@@ -176,13 +176,13 @@
     Plugin 'majutsushi/tagbar'
 
     " python-syntax - Python syntax highlighting
-    Plugin 'hdima/python-syntax'
+ "   Plugin 'hdima/python-syntax'
 
     " jpythonfold.vim - Python fold script
-    Plugin 'pcaro90/jpythonfold.vim'
+ "   Plugin 'pcaro90/jpythonfold.vim'
 
     " YouCompleteMe - Code completion engine
-    Plugin 'Valloric/YouCompleteMe'
+ "   Plugin 'Valloric/YouCompleteMe'
 
     " ack.vim - Ack (better than grep!) replacement
     Plugin 'mileszs/ack.vim'
