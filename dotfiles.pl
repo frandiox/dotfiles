@@ -11,6 +11,8 @@ use strict;
 
 ################# INSTALL ##################
 
+mkdir($ENV{"HOME"}.'/bin') if (! -d $ENV{"HOME"}.'/bin');
+
 ### Comment the line of the program that you don't need to install
 ack();       # A better grep command.
 oh_my_zsh(); # Enhances zsh (requires zsh shell installed).
