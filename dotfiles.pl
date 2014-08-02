@@ -1,9 +1,17 @@
 #!/usr/bin/perl -w
-
+# -----------------------------------------------------------
+# Francisco Dios <frandiox@gmail.com> - http://frandiox.com/
+# dotfiles.pl
+# -----------------------------------------------------------
 use strict;
+
+# You can modify INSTALL and DOTFILES PARAMETERS sections to fit your needs.
+# Further modifications should not be necessary.
+
 
 ################# INSTALL ##################
 
+### Comment the line of the program that you don't need to install
 ack();       # A better grep command.
 oh_my_zsh(); # Enhances zsh (requires zsh shell installed).
 
@@ -20,37 +28,32 @@ my $dotfiles = $home."/dotfiles";
 
 ### Paths to be linked (symbolic link)
 # 
-# The first parameter in each line is the name of the configuration file
-# (i.e. 'bashrc' is $HOME/.bashrc)
-# 
-# The second parameter is the path inside dotfiles folder where the final
-# configuration file or folder will reside
-# (i.e. 'shell/bash' is $HOME/dotfiles/shell/bash)
-# 
-# Therefore, 'bashrc shell/bash' creates symbolic link $HOME/.bashrc pointing
-# to $HOME/dotfiles/shell/bash/bashrc
-# 'vim vim' links $HOME/.vim (folder) to $HOME/dotfiles/vim/vim (folder)
-# 'vimrc vim' links $HOME/.vimrc (file) to $HOME/dotfiles/vim/vimrc (file)
-# 
-# Add new lines or comment the existing ones that you don't need
+# Every path must exist inside dotfiles folder. This creates a symbolic link
+# in $HOME pointing to the specific path. The last part of each path also
+# specifies the name of the original dotfile (without '.')
+#
+# Examples:
+# 'shell/bash/bashrc'>  $HOME/.bashrc   --->    $HOME/dotfiles/shell/bash/bashrc (file)
+# 'vim'>                $HOME/.vim      --->    $HOME/dotfiles/vim (folder)
+# 'vim/vimrc'>          $HOME/.vimrc    --->    $HOME/dotfiles/vim/vimrc (file)
+#
+# Add new lines or remove the existing ones that you don't need
 ###
-my %paths = qw(
-                ackrc others/ack                
+my @paths = qw(
+                i3
+                git/gitconfig
+                git/gitignore_global
+                others/ack/ackrc
+                shell/profile
+                shell/bash/bashrc
+                shell/bash/bash_aliases
+                shell/bash/bash_profile
+                shell/zsh/zshrc
+                tmux/tmux.conf
+                vim
+                vim/vimrc
+);
 
-                bashrc shell/bash
-                bash_profile shell/bash
-                bash_aliases shell/bash
-                
-                gitconfig git
-                gitignore_global git
-                
-                i3 i3
-                profile shell
-                tmux.conf tmux
-                vim vim
-                vimrc vim
-                zshrc shell/zsh
-                );
 
 ############################################
 ################ DOTFILES ##################
@@ -73,7 +76,8 @@ print "> Creating directory $bakdotfiles\n\n";
 mkdir($bakdotfiles) or die "--- Cannot mkdir $bakdotfiles: $!";
 
 my $bakdf = 0;
-foreach my $file (keys %paths){
+foreach my $path (@paths){
+    my $file = (split(/\//, $path))[-1];
     my $dotfile = '.'.$file;
     if (-l $dotfile){
         $bakdf = 1;
@@ -82,8 +86,8 @@ foreach my $file (keys %paths){
     }
 
     print "\t> Creating symbolic link for $dotfile\n\n";
-    my $route = $dotfiles.'/'.$paths{$file}.'/';
-    symlink($route.$file, $dotfile) or die "\t--- Cannot symlink $route.$file: $!";
+    my $route = $dotfiles.'/'.$path;
+    symlink($route, $dotfile) or die "\t--- Cannot symlink $route: $!";
 }
 
 (rmdir($bakdotfiles) and print "> Deleted empty directory $bakdotfiles\n\n") if !$bakdf;
@@ -91,7 +95,9 @@ foreach my $file (keys %paths){
 print "Finished.\n\n";
 
 
+#############################################
 ############# INSTALL FUNCTIONS #############
+#############################################
 
 sub ack {
     my $ack = $ENV{"HOME"}.'/bin/ack';
