@@ -63,7 +63,7 @@ my @paths = qw(
 ################ DOTFILES ##################
 ############################################
 
-print "> Entering directory $home\n";
+print "\n\n>> Entering directory $home\n";
 chdir($home) or die "--- Cannot chdir to $home: ($!)\n";
 
 my $bakdotfiles_orig = '.bakdotfiles';
@@ -76,7 +76,7 @@ if (-d $bakdotfiles){
         $bakdotfiles = $bakdotfiles_orig.$i;
     }
 }
-print "> Creating directory $bakdotfiles\n\n";
+print ">> Creating directory $bakdotfiles\n\n";
 mkdir($bakdotfiles) or die "--- Cannot mkdir $bakdotfiles: $!";
 
 my $bakdf = 0;
@@ -94,10 +94,10 @@ foreach my $path (@paths){
     symlink($route, $dotfile) or die "\t--- Cannot symlink $route: $!";
 }
 
-(rmdir($bakdotfiles) and print "> Deleted empty directory $bakdotfiles\n\n") if !$bakdf;
+(rmdir($bakdotfiles) and print ">> Deleted empty directory $bakdotfiles\n\n") if !$bakdf;
 
-print "Finished.\n\n";
-print "  Type:    vim +PluginInstall +qall\  nTo install Vim plugins\n\n";
+print ">> Finished.\n\n";
+print "  Type:    vim +PluginInstall +qall      to install Vim plugins\n\n";
 
 
 #############################################
@@ -106,15 +106,15 @@ print "  Type:    vim +PluginInstall +qall\  nTo install Vim plugins\n\n";
 
 sub ack {
     my $ack = $ENV{"HOME"}.'/bin/ack';
-    print ">> Instaling ack...\n\n";
+    print "\n>> Instaling ack...\n\n";
     system("curl http://beyondgrep.com/ack-2.04-single-file > $ack && chmod 0755 $ack") == 0 or warn "Failed to install ack: $?";
 }
 sub oh_my_zsh {
-    print "\n>> Installing oh-my-zsh...\n\n";
+    print "\n\n>> Installing oh-my-zsh...\n";
     system("curl -L -k http://install.ohmyz.sh | sh") == 0 or warn "Failed to install oh-my-zsh: $?";
 }
 sub vim_vundle {
-    print "\n>> Installing Vim Vundle...\n";
+    print "\n\n>> Installing Vim Vundle...\n";
     mkdir($dotfiles.'/vim/bundle') or warn "--- Cannot mkdir vim/bundle: $!";
     chdir($dotfiles.'/vim/bundle') or warn "--- Cannot chdir to vim/bundle: $!";
     system("git clone https://github.com/gmarik/Vundle.vim.git") == 0 or warn "--- Cannot clone gmarik/Vundle.vim: $!";
