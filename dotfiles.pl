@@ -14,8 +14,8 @@ use strict;
 mkdir($ENV{"HOME"}.'/bin') if (! -d $ENV{"HOME"}.'/bin');
 
 ### Comment the line of the program that you don't need to install
-ack();       # A better grep command.
-oh_my_zsh(); # Enhances zsh (requires zsh shell installed).
+print ">> Installing ack...\n\n"; ack();       # A better grep command.
+print ">> Installing oh-my-zsh...\n\n"; oh_my_zsh(); # Enhances zsh (requires zsh shell installed).
 
 ########### DOTFILES PARAMETERS ############
 
@@ -106,6 +106,6 @@ sub ack {
     system("curl http://beyondgrep.com/ack-2.04-single-file > $ack && chmod 0755 $ack") == 0 or warn "Failed to install ack: $?";
 }
 sub oh_my_zsh {
-    system("curl -L http://install.ohmyz.sh | sh") == 0 or warn "Failed to install oh-my-zsh: $?";
+    system("curl -L -k http://install.ohmyz.sh | sh") == 0 or warn "Failed to install oh-my-zsh: $?";
 }
 
