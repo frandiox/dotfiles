@@ -97,7 +97,10 @@ foreach my $path (@paths){
 (rmdir($bakdotfiles) and print ">> Deleted empty directory $bakdotfiles\n\n") if !$bakdf;
 
 print ">> Finished.\n\n";
-print "  Type:    vim +PluginInstall +qall      to install Vim plugins\n\n";
+print "  You may need to reload your configuration for bash, zsh, tmux...\n";
+print "  Type:    tmux source-file ~/.tmux.conf   to reload tmux configuration\n";
+print "  Type:    chsh -s \$(which zsh)           to set zhs as your main shell\n";
+print "  Type:    vim +PluginInstall +qall        to install Vim plugins\n\n";
 
 
 #############################################
