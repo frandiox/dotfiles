@@ -115,8 +115,8 @@ sub oh_my_zsh {
 }
 sub vim_vundle {
     print "\n>> Installing Vim Vundle...\n";
-    mkdir($dotfiles.'/vim/bundle') == 0 or warn "---Cannot mkdir vim/bundle: $!";
-    chdir($dotfiles.'/vim/bundle');
+    mkdir($dotfiles.'/vim/bundle') or warn "--- Cannot mkdir vim/bundle: $!";
+    chdir($dotfiles.'/vim/bundle') or warn "--- Cannot chdir to vim/bundle: $!";
     system("git clone https://github.com/gmarik/Vundle.vim.git") == 0 or warn "--- Cannot clone gmarik/Vundle.vim: $!";
 }
 
