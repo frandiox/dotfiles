@@ -35,6 +35,8 @@ my $dotfiles = $home."/dotfiles";
 # Add new lines or comment the existing ones that you don't need
 ###
 my %paths = qw(
+                ackrc others/ack                
+
                 bashrc shell/bash
                 bash_profile shell/bash
                 bash_aliases shell/bash
