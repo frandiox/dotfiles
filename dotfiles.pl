@@ -81,7 +81,7 @@ my $bakdf = 0;
 foreach my $path (@paths){
     my $file = (split(/\//, $path))[-1];
     my $dotfile = '.'.$file;
-    if (-l $dotfile){
+    if ((-l $dotfile) or (-e $dotfile)){
         $bakdf = 1;
         print "\t> $dotfile already exists, creating back up in $bakdotfiles\n";
         rename($dotfile, $bakdotfiles.'/'.$file) or die "\t--- Cannot rename $dotfile: $!";
