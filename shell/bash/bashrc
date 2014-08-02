@@ -11,6 +11,9 @@
 # If not running interactively, exit
 [[ $- != *i* ]] && return
 
+# PATH variable
+export PATH=$HOME/bin:$PATH
+
 # Vim as system editor
 export EDITOR=vim
 
