@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 # -----------------------------------------------------------
-# Francisco Dios <frandiox@gmail.com> - http://frandiox.com/
+# Francisco Dios <me@frandiox.com> - http://frandiox.com/
 # dotfiles.pl
 # -----------------------------------------------------------
 use strict;
