@@ -7,7 +7,7 @@ For those who change OS or machine very frequently it's very inconvenient to con
 
 Special thanks to Pablo Caro!
 
-Fran Dios - me@frandiox.com - frandiox.com
+Fran Dios - me@frandiox.com - http://frandiox.com
 
 Install
 -------
