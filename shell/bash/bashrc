@@ -23,6 +23,11 @@ export HISTSIZE=2000
 # Set TERM var correctly WARNING
 export TERM=xterm-256color
 
+# Init Ibus input
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
