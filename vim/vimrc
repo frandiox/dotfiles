@@ -44,6 +44,13 @@
     " Not vi compatible
         set nocompatible
 
+    " Mouse support
+        set mouse=a
+
+    " Clipboard support
+        set clipboard=unnamed
+        set go+=a
+
     " History length
         set history=1000
 
