@@ -110,7 +110,7 @@ print "  Type:    vim +PluginInstall +qall        to install Vim plugins\n\n";
 sub ack {
     my $ack = $ENV{"HOME"}.'/bin/ack';
     print "\n>> Instaling ack...\n\n";
-    system("curl http://beyondgrep.com/ack-2.04-single-file > $ack && chmod 0755 $ack") == 0 or warn "Failed to install ack: $?";
+    system("curl http://beyondgrep.com/ack-2.14-single-file > $ack && chmod 0755 $ack") == 0 or warn "Failed to install ack: $?";
 }
 sub oh_my_zsh {
     print "\n\n>> Installing oh-my-zsh...\n";
