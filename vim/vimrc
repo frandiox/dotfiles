@@ -1,6 +1,7 @@
 " ---------------------------------------------------
 " Copyright (c) 2013 Pablo Caro. All Rights Reserved.
 " Pablo Caro <me@pcaro.es> - http://pcaro.es/
+" Modified by Fran Dios <me@frandiox.com>
 " vimrc
 " ---------------------------------------------------
 "
@@ -63,11 +64,11 @@
     " Autoindent the code
         set autoindent
 
-    " Defining tab behavior: spaces instead of tab, 4 spaces width
+    " Defining tab behavior: spaces instead of tab, 2 spaces width
         set expandtab
-        set tabstop=4
-        set softtabstop=4
-        set shiftwidth=4
+        set tabstop=2
+        set softtabstop=2
+        set shiftwidth=2
 
     " Start with every fold closed
         set foldlevelstart=0
@@ -79,7 +80,8 @@
         set listchars=tab:>\ ,trail:~,eol:$
 
     " Show before wrapped lines
-        set showbreak=>>>
+        set breakindent
+        set showbreak=↳
 
     " Show line numbers, as well as row and column
         set number
@@ -171,9 +173,10 @@
     Plugin 'Raimondi/delimitMate'
 
     " UltiSnip - Implementation of TextMate's Snippets
- "   Plugin 'SirVer/ultisnips'
+    Plugin 'SirVer/ultisnips'
+    Plugin 'honza/vim-snippets'
 
-    " Syntastic - Syntax cheching through external syntax checkers
+    " Syntastic - Syntax checking through external syntax checkers
     Plugin 'scrooloose/syntastic'
 
     " NERDtree - A tree explorer plugin
@@ -189,7 +192,7 @@
  "   Plugin 'pcaro90/jpythonfold.vim'
 
     " YouCompleteMe - Code completion engine
- "   Plugin 'Valloric/YouCompleteMe'
+    Plugin 'Valloric/YouCompleteMe'
 
     " ack.vim - Ack (better than grep!) replacement
     Plugin 'mileszs/ack.vim'
@@ -203,17 +206,33 @@
     " DeleteTrailingWhitespace - Delete unwanted whitespace at the end of lines
     Plugin 'DeleteTrailingWhitespace'
 
+    " Emmet for Vim
+    Plugin 'mattn/emmet-vim'
+
+    " Git Gutter
+    Plugin 'airblade/vim-gitgutter'
+
+    " Vim airline
+    Plugin 'vim-airline/vim-airline'
+    Plugin 'vim-airline/vim-airline-themes'
+
+    " Tern for VIM
+    Plugin 'ternjs/tern_for_vim'
+
+    " ES6 Syntax
+    Plugin 'isRuslan/vim-es6'
+
     " LaTeX-BoX - Lightweight Toolbox for LaTeX
-    Plugin 'LaTeX-Box-Team/LaTeX-Box'
+    " Plugin 'LaTeX-Box-Team/LaTeX-Box'
 
     " TeX-PDF - Lightweight TeX-to-PDF development support
-    Plugin 'TeX-PDF'
+    " Plugin 'TeX-PDF'
 
     " Jellybeans color scheme
     Plugin 'nanotech/jellybeans.vim'
 
     " molokai color scheme
-    Plugin 'tomasr/molokai'
+    " Plugin 'tomasr/molokai'
 
     call vundle#end()
     filetype plugin indent on
@@ -276,18 +295,18 @@
     " Fold and unfold code
         nnoremap <leader>l zo
         nnoremap <leader>h zc
-        nnoremap <leader>fa zM
-        nnoremap <leader>uf zR
+        " nnoremap <leader>fa zM
+        " nnoremap <leader>uf zR
 
-        nnoremap <C-j> zj
-        nnoremap <C-k> zk
+        " nnoremap <C-j> zj
+        " nnoremap <C-k> zk
 
     " Fast moving between windows
-        nnoremap <C-h> <C-w>W
-        nnoremap <C-l> <C-w>w
+        " nnoremap <C-h> <C-w>W
+        " nnoremap <C-l> <C-w>w
 
     " Fast buffer delete
-        nnoremap <C-b> :bdelete<CR>
+        " nnoremap <C-b> :bdelete<CR>
 
     " List invisible characters
         nnoremap <silent> <F3> :set list!<CR>
@@ -315,6 +334,26 @@
             \ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
             \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
 
+    " Move in wrapped lines
+      nnoremap <C-j> gj
+      nnoremap <C-k> gk
+
+    " Move lines around " Using Unicode in URxvt for <C-S-j> <C-S-k>
+      nmap ߜ :m+<CR>==
+      imap ߜ :m+<CR>==
+      nmap ߡ :m-2<CR>==
+      imap ߡ :m-2<CR>==
+
+    " Move in words
+      nnoremap <C-h> b
+      nnoremap <C-l> e
+      nnoremap <C-H> B
+      nnoremap <C-L> E
+
+    " Move cursor to top-mid-bottom
+      nnoremap K H
+      nnoremap J L
+      nnoremap H J
 
 " Plugins options and mappings {{{1
     " DeleteTrailingWhitespace
@@ -324,8 +363,10 @@
     " Syntastic
         nnoremap <F6> :SyntasticCheck<CR>:Errors<CR>:lfirst<CR>
 
+        let g:syntastic_javascript_checkers = ['eslint']
         let g:syntastic_python_checkers = ['flake8', 'python', 'pep257']
         let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+        " let g:syntastic_debug = 3
 
     " commentary.vim
     " NOTE: These mappings HAVE to allow recursive mapping
@@ -341,10 +382,10 @@
     endif
 
     " TeX-PDF
-        let g:tex_pdf_map_keys = 0
-        if has("autocmd")
-            autocmd FileType tex nnoremap <buffer> <silent> <F5> :BuildTexPdf<CR>
-        endif
+        " let g:tex_pdf_map_keys = 0
+        " if has("autocmd")
+        "     autocmd FileType tex nnoremap <buffer> <silent> <F5> :BuildTexPdf<CR>
+        " endif
 
     " NERDtree
         nnoremap <F9> :NERDTreeToggle<CR>
@@ -360,17 +401,23 @@
         let g:UltiSnipsExpandTrigger="<C-h>"
         let g:UltiSnipsJumpForwardTrigger="<C-h>"
         let g:UltiSnipsListSnippets="<C-y>"
+        let g:UltiSnipsEditSplit="vertical"
 
     " delimitMate
         imap <C-\> <Plug>delimitMateJumpMany
 
     " YouCompleteMe
         let g:ycm_autoclose_preview_window_after_insertion = 1
+        " let g:ycm_auto_trigger = 0 " <C-Spance>
+        let g:ycm_add_preview_to_completeopt=0
+        let g:ycm_confirm_extra_conf=0
+        set completeopt-=preview
 
     " Adjust S-Tab mapping in YCM, overwritten by delimitMate
         inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-
+    " Airline
+        let g:airline_powerline_fonts = 1
 
 " Extra functions {{{1
     " If buffer modified, update any 'Last modified: ' in the first 20 lines.
