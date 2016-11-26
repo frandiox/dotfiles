@@ -2,7 +2,7 @@
 export ZSH=$HOME/.oh-my-zsh
 
 # Set default XTERM
-export TERM='xterm-256color'
+# export TERM='xterm-256color'
 
 #if [ -e /usr/share/terminfo/x/xterm-256color ]; then
 #            export TERM='xterm-256color'
@@ -54,13 +54,13 @@ ZSH_CUSTOM=$HOME/dotfiles/shell/zsh/oh-my-zsh/custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git common-aliases cp extract jsontools last-working-dir vundle npm nvm debian sudo web-search wd)
+plugins=(git common-aliases cp extract jsontools last-working-dir vundle sudo web-search wd)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="$HOME/bin:/usr/local/bin:/usr/bin:/bin"
+export PATH="$HOME/bin:/usr/local/bin:/usr/bin:/bin:$HOME/.yarn/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -70,7 +70,7 @@ export PATH="$HOME/bin:/usr/local/bin:/usr/bin:/bin"
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='mvim'
+  export EDITOR='vim'
 fi
 
 # Compilation flags
@@ -80,6 +80,14 @@ fi
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # Ibus
-  export GTK_IM_MODULE=ibus
-  export XMODIFIERS=@im=ibus
-  export QT_IM_MODULE=ibus
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+
+# Ctrl-arrow word jump in URxvt
+bindkey '^[Oc' forward-word
+bindkey '^[Od' backward-word
+
+# Global path for yarnpkg
+export PREFIX="$HOME/.yarn"
+
