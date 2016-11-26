@@ -3,9 +3,9 @@ dotfiles
 
 Linux user configuration files (dotfiles).
 
-For those who change OS or machine very frequently it's very inconvenient to configure everything over and over again. This is my repo to share my own configuration files (although I am not the author of several configuration files themselves nor used modules) throughout my machines. This just creates links from your home folder to dotfiles folder, so all the config files remain there.
+These are the configuration files I use throughout my machines, although I am not the original author of some of them. This just creates symlinks from the home folder to dotfiles folder, so all the config files remain in the same place.
 
-Special thanks to Pablo Caro!
+Special thanks to [Pablo Caro](https://github.com/pcaro90/) for some of the configuration files!
 
 Fran Dios - me@frandiox.com - http://frandiox.com
 
