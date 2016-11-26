@@ -5,7 +5,7 @@
 # -----------------------------------------------------------
 use strict;
 
-# You can modify GENERAL, INSTALL and PARAMETERS sections to fit your needs.
+# Modify GENERAL, INSTALL and PARAMETERS sections to fit your needs.
 # Further modifications should not be necessary.
 
 ################# GENERAL ##################
@@ -44,18 +44,21 @@ vim_vundle();   # Vim plugin manager.
 # Add new lines or remove the existing ones that you don't need
 ###
 my @paths = qw(
-                i3
-                git/gitconfig
-                git/gitignore_global
-                others/ack/ackrc
-                shell/profile
-                shell/bash/bashrc
-                shell/bash/bash_aliases
-                shell/bash/bash_profile
-                shell/zsh/zshrc
-                tmux/tmux.conf
-                vim
-                vim/vimrc
+    i3
+    i3/i3status.conf
+    git/gitconfig
+    git/gitignore_global
+    others/ack/ackrc
+    others/screenlayout
+    shell/profile
+    shell/bash/bashrc
+    shell/bash/bash_aliases
+    shell/bash/bash_profile
+    shell/zsh/zshrc
+    tmux/tmux.conf
+    vim
+    vim/vimrc
+    X/Xresources
 );
 
 
@@ -101,6 +104,7 @@ print "  You may need to reload your configuration for bash, zsh, tmux...\n";
 print "  Type:    tmux source-file ~/.tmux.conf   to reload tmux configuration\n";
 print "  Type:    chsh -s \$(which zsh)           to set zhs as your main shell\n";
 print "  Type:    vim +PluginInstall +qall        to install Vim plugins\n\n";
+print "  Include -- ' [[ -f ~/.Xresources ]] && xrdb -merge -I$home ~/.Xresources ' in $home/.xinitrc and manually install the necessary fonts\n\n";
 
 
 #############################################

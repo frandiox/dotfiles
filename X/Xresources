@@ -1,0 +1,46 @@
+#if __has_include(".extend.Xresources")
+#include ".extend.Xresources"
+#endif
+
+! ^ The above lines are no comments!
+! Leave them as they are if a file ~/.extend.Xresources is being used on your system.
+! config can be added there or also here below.
+! For comments use "!"
+
+Xft.dpi: 144
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: false
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
+URxvt.font: xft:Hermit:pixelsize=22,\
+xft:DejaVuSansMono:pixelsize=22,\
+xft:FreeSerif:style=Regular,\
+xft:Koruri:style=Regular:pixelsize=20,\
+xft:Unifont:style=Medium:pixelsize=22
+
+URxvt.boldFont:
+URxvt.italicFont:
+URxvt.boldItalicFont:
+
+URxvt.perl-ext:  default,clipboard,font-size,matcher
+URxvt.keysym.C-C: perl:clipboard:copy
+URxvt.keysym.C-V: perl:clipboard:paste
+URxvt.keysym.C-A-V: perl:clipboard:paste_escaped
+URxvt.keysym.Control-0x2b: perl:font-size:increase
+URxvt.keysym.Control-0x2d: perl:font-size:decrease
+URxvt.keysym.Control-Shift-J: ߜ
+URxvt.keysym.Control-Shift-K: ߡ
+URxvt.url-launcher: /usr/bin/google-chrome-stable
+Urxvt.matcher.button: 1
+
+XTerm*background: #e7e7e7
+XTerm*foreground: #2b2b2b
+XTerm*pointerColor: #16A085
+XTerm*faceName: Hermit
+XTerm*faceSize: 10
