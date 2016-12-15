@@ -115,7 +115,7 @@
         set laststatus=2
 
     " The width of the text is 79 characters maximum
-        set textwidth=79
+        set textwidth=0
 
     " Mark the column next to textwidth
         set colorcolumn=+1
@@ -219,8 +219,10 @@
     " Tern for VIM
     Plugin 'ternjs/tern_for_vim'
 
-    " ES6 Syntax
-    Plugin 'isRuslan/vim-es6'
+    " ES6  and JSX syntax
+    " Plugin 'isRuslan/vim-es6'
+    Plugin 'pangloss/vim-javascript'
+    Plugin 'mxw/vim-jsx'
 
     " LaTeX-BoX - Lightweight Toolbox for LaTeX
     " Plugin 'LaTeX-Box-Team/LaTeX-Box'
@@ -346,9 +348,15 @@
 
     " Move in words
       nnoremap <C-h> b
+      vnoremap <C-h> b
+      inoremap <C-h> <C-o>b
       nnoremap <C-l> e
-      nnoremap <C-H> B
-      nnoremap <C-L> E
+      vnoremap <C-l> e
+      inoremap <C-l> <C-o>e
+      nnoremap ߔ B
+      nnoremap ߓ E
+      inoremap ߔ <C-o><Left>
+      inoremap ߓ <C-o><Right>
 
     " Move cursor to top-mid-bottom
       nnoremap K H
@@ -398,9 +406,9 @@
         nnoremap <F10> :TagbarToggle<CR>
 
     " UltiSnips
-        let g:UltiSnipsExpandTrigger="<C-h>"
-        let g:UltiSnipsJumpForwardTrigger="<C-h>"
-        let g:UltiSnipsListSnippets="<C-y>"
+        let g:UltiSnipsExpandTrigger="<C-b>"
+        let g:UltiSnipsJumpForwardTrigger="<C-b>"
+        " let g:UltiSnipsListSnippets="<C-y>"
         let g:UltiSnipsEditSplit="vertical"
 
     " delimitMate
@@ -419,6 +427,8 @@
     " Airline
         let g:airline_powerline_fonts = 1
 
+    " Syntax
+        let g:jsx_ext_required = 0
 " Extra functions {{{1
     " If buffer modified, update any 'Last modified: ' in the first 20 lines.
     " http://vim.wikia.com/wiki/Insert_current_date_or_time

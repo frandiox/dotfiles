@@ -36,6 +36,8 @@ URxvt.keysym.Control-0x2b: perl:font-size:increase
 URxvt.keysym.Control-0x2d: perl:font-size:decrease
 URxvt.keysym.Control-Shift-J: ߜ
 URxvt.keysym.Control-Shift-K: ߡ
+URxvt.keysym.Control-Shift-H: ߔ
+URxvt.keysym.Control-Shift-L: ߓ
 URxvt.url-launcher: /usr/bin/google-chrome-stable
 Urxvt.matcher.button: 1
 
