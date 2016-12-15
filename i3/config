@@ -57,8 +57,9 @@ bindsym $mod+Ctrl+m exec pavucontrol
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
-bindsym $mod+F2 exec palemoon
+# bindsym $mod+F2 exec palemoon
 bindsym $mod+F3 exec pcmanfm
+bindsym $mod+g exec google-chrome-stable
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec gksu pcmanfm
 bindsym $mod+F5 exec terminal -e 'mocp'
@@ -105,7 +106,7 @@ bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_
 # split orientation
 # bindsym $mod+h split h;exec notify-send 'tile horizontally'
 bindsym $mod+v split v;exec notify-send 'tile vertically'
-bindsym $mod+q split toggle
+bindsym $mod+q split toggle;exec notify-send `i3-msg -t get_tree | jq -r 'recurse(.nodes[]) | select(.nodes[].focused == true) | .orientation'`
 
 # toggle fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
