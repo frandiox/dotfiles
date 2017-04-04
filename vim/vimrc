@@ -146,7 +146,9 @@
         let g:tex_flavor = "latex"
 
 " Vundle configuration {{{1
-    filetype off
+    filetype plugin on
+
+    runtime macros/matchit.vim
 
     set rtp+=~/.vim/bundle/Vundle.vim
     call vundle#begin()
@@ -192,7 +194,7 @@
  "   Plugin 'pcaro90/jpythonfold.vim'
 
     " YouCompleteMe - Code completion engine
-    Plugin 'Valloric/YouCompleteMe'
+    " Plugin 'Valloric/YouCompleteMe'
 
     " ack.vim - Ack (better than grep!) replacement
     Plugin 'mileszs/ack.vim'
@@ -202,6 +204,10 @@
     " Plugin 'JamshedVesuna/vim-markdown-preview'
     Plugin 'suan/vim-instant-markdown'
     Plugin 'reedes/vim-pencil'
+    Plugin 'rhysd/vim-grammarous'
+    Plugin 'Shougo/vimproc.vim'
+    Plugin 'Shougo/denite.nvim'
+    Plugin 'kana/vim-operator-user'
 
     " ShowTrailingWhitespace - Detect unwanted whitespace at the end of lines
     Plugin 'ShowTrailingWhitespace'
@@ -427,11 +433,11 @@
         imap <C-\> <Plug>delimitMateJumpMany
 
     " YouCompleteMe
-        let g:ycm_autoclose_preview_window_after_insertion = 1
-        " let g:ycm_auto_trigger = 0 " <C-Spance>
-        let g:ycm_add_preview_to_completeopt=0
-        let g:ycm_confirm_extra_conf=0
-        set completeopt-=preview
+        " let g:ycm_autoclose_preview_window_after_insertion = 1
+        " " let g:ycm_auto_trigger = 0 " <C-Spance>
+        " let g:ycm_add_preview_to_completeopt=0
+        " let g:ycm_confirm_extra_conf=0
+        " set completeopt-=preview
 
     " Adjust S-Tab mapping in YCM, overwritten by delimitMate
         inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -477,6 +483,10 @@
 
         " Javascript execute
         autocmd Filetype javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2
+
+        " Vue execute
+        autocmd Filetype vue setlocal commentstring=//\ %s
+
 
         " LaTeX spanish chars
         augroup LaTeX
